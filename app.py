@@ -145,35 +145,26 @@ def first():
 if __name__ == '__main__':
 
     data = pd.read_csv('data.csv', sep='\t').fillna('')
-    print('data')
 
     with open('vocabulary.txt', 'r', encoding='utf-8') as f:
         vocabulary = f.read().split()
-    print('voc')
 
     russian_stopwords = set(stopwords.words('russian'))
     with open('vectorizer', 'rb') as f:
         vectorizer = pickle.load(f)
-    print('vect')
 
-#   w2v_model_path = "/home/evgeniyamiller/araneum_none_fasttextskipgram_300_5_2018.model"
     model = Word2Vec.load('araneum_none_fasttextskipgram_300_5_2018.model')
-    print('ok')
 
     with open('w2v_base.json', 'r') as f:
         w2v_base = json.load(f)
-        print('base')
 
     sparse_matrix = scipy.sparse.load_npz('matrix.npz')
     ts = np.transpose(sparse_matrix.toarray())
-    print('ts')
 
     with open('ns.json', 'r') as f:
         ns = json.load(f)
-        print('ns')
 
     with open('dls.json', 'r') as f:
         dls = json.load(f)
-        print('dls')
 
-    app.run()#debug=True)
+    app.run()
