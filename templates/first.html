@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Search page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td align='right'>
+                Запрос:
+            </td>
+            <td>
+              <input type="text" name="query" style='width:100%'></input><br>
+			</td>
+		</tr>
+    <tr>
+        <td align='right'>
+            Размер выдачи:
+        </td>
+        <td>
+            <input type='text' name="n">
+        </td>
+        <td align='center'>
+
+            <button type="submit">Search</button>
+        </td>
+    </tr>
+    </table>
+</form>
+{% for answer in answers %}
+---<br>
+{{ answer[0] }}<br>
+<b>Вакансия: </b>{{ answer[3] }}<br>
+<b>Адрес: </b>{{ answer[1] }}<br>
+<b>График: </b>{{ answer[4] }}<br>
+<b>Опыт: </b>{{ answer[5] }}<br>
+<b>Сфера деятельности: </b>{{ answer[6] }}<br>
+<b>Описание: </b>{{ answer[7] }}<br>
+<b>Ссылка: </b> <a href='https://www.avito.ru/moskva/vakansii/@({{ answer[2] }})'>https://www.avito.ru/moskva/vakansii/{{ answer[2] }}</a><br>
+{% endfor %}
+</body>
+</html>
